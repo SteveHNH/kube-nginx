@@ -32,8 +32,8 @@ spec:
       volumes:
         - name: www
           nfs:
-            server: dci-centrallp01.dhe.duke.edu
-            path: "/srv/NFS/web1"
+            server: example.com
+            path: "/foo/bar/web1"
             readOnly: true
       containers:
       - name: nginx
