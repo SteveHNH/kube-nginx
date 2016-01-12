@@ -26,6 +26,8 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+          # remove this if using the service
+          hostPort: 8080
         volumeMounts:
           - name: www
             mountPath: "/usr/share/nginx/html/"
