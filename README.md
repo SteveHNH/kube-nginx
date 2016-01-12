@@ -33,6 +33,22 @@ If you have to rollback the update, it's equally as simple just by reversing it.
 
 If you have a kubernetes service or load balancer configured, you can actually see the website refresh. Make sure different content is in the different shares you used so that you can actually see the content change.
 
+## Service
+
+Among the files here is also a kubernetes service yaml file for standing up a the NGINX install as a service. You can point a load balancer or proxy at any node in the cluster and the service will load balance the connections across all pods matching the selector. In our case, this is app: nginx-v1.
+
+    kubectl create -f svc-nginx.yml
+
+Once the service is up, you can point your browser to ${EXTERNAL_IP}:30061. The nodePort value was configured to 30061 but it could just as easily be any other port between 30000 and 32767.
+
+*NOTE* If you use this option, be sure to remove hostPort from the container template in rc-nginx.yml.
+
+## Optional: Bundle the app
+
+You can also bundle the service and replication controller together into a single file so it stands everything up without having to reference two files. The syntax for that is found in the app-nginx.yml file in this repo.
+
+    kubectl create -f app-nginx.yml
+
 ## Ideas
 
 My next steps are to use Git to manage the web content, then try to get jenkins to pull it automatically and build the new servers with one simple job. Also want to learn how to get drupal/wordpress and mariadb working together with static content.
