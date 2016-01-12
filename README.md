@@ -31,7 +31,7 @@ If you have to rollback the update, it's equally as simple just by reversing it.
 
     kubectl rolling-update nginx-controller-v2 --update-period=10s -f rc-nginx.yml
 
-If you have a load balancer in front of the containers that points to your nodes, you can actually see the website refresh. Make sure different content is in the different shares you used so that you can actually see the content change.
+If you have a kubernetes service or load balancer configured, you can actually see the website refresh. Make sure different content is in the different shares you used so that you can actually see the content change.
 
 ## Ideas
 
